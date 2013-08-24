@@ -10,3 +10,7 @@ db = SQLAlchemy(app)
 @app.route('/')
 def hello():
     return 'Nothing to see here, move along!'
+
+@app.route('/highscores')
+def highscores_list():
+    return []

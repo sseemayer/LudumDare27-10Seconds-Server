@@ -26,3 +26,11 @@ class Highscore(db.Model):
     color = db.Column(db.String(7))
 
     score = db.Column(db.Integer)
+
+    challenge_scores = db.column(db.Text)
+
+    def __init__(self, player, color, score, challenge_scores):
+        self.player = player
+        self.color = color
+        self.score = score
+        self.challenge_scores = challenge_scores
