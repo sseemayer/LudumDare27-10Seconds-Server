@@ -7,6 +7,7 @@ app = Flask(__name__)
 heroku = Heroku(app)
 db = SQLAlchemy(app)
 
+app.debug = True
 
 import models
 
