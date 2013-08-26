@@ -3,6 +3,7 @@ import flask
 from flask import request
 from flask.ext.heroku import Heroku
 from flask.ext.sqlalchemy import SQLAlchemy
+from sqlalchemy.sql.expression import func
 
 app = flask.Flask(__name__)
 heroku = Heroku(app)
@@ -55,7 +56,7 @@ def highscore_add():
 def replays_list(challenge):
 
     out = []
-    for replay in db.session.query(models.Replay).filter(models.Replay.challenge == challenge):
+    for replay in db.session.query(models.Replay).filter(models.Replay.challenge == challenge).order_by(func.random()).limit(20):
         out.append({
             'player': replay.player,
             'color': replay.color,
